@@ -9,6 +9,10 @@ function goBack() {
 $(document).ready(function () {
     var recognizer;
 
+    $("#stopButton").click(function () {
+        console.log("STOP RECORDING SHOULD WORK");
+        recognizer.
+    })
     $("#startButton").click(function () {
         if (!recognizer) {
             var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -44,4 +48,4 @@ $(document).ready(function () {
             };
         }
     });
-});
+})
