@@ -54,13 +54,12 @@
         margin-top: 20px; /* Adds space at the top */
     }
 </style>
+<script>
+    //goBack();
+</script>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    <script>
-        init();
-      //goBack();
-    </script>
 }

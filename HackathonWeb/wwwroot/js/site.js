@@ -9,6 +9,10 @@ function goBack() {
 const myElement = document.getElementById("result");
 myElement.style.fontSize = "20px";
 
+$(document).ready(function () {
+    init();
+})
+
 //$(document).ready(function () {
 //    console.log("TEXT TO SPEECH ACTIVATED")
 
@@ -82,36 +86,49 @@ function init() {
                 }
             }
             result.innerText = speech.text;
+            if (audio.isFinal)
+                populateAssessmentForms(speech.text);
+            //if (speech.text.includes("full name")) {
+            //    el = document.getElementById("firstNameInput");
+            //    el.value = speech.text;
+            //}
+        }
 
             //send the results here
-            populateAssessmentForms(speech.text);
         });
 
-        toggle.addEventListener('click', () => {
-            speech.listening = !speech.listening;
-            if (speech.listening) {
-                toggle.classList.add('listening');
-                toggle.innerText = 'Listening ...';
-                speech.recognition.start();
-            }
-            else {
-                toggle.classList.remove('listening');
-                toggle.innerText = 'Toggle listening';
-                speech.recognition.stop();
-            }
-        })
-    }
+    toggle.addEventListener('click', () => {
+        speech.listening = !speech.listening;
+        if (speech.listening) {
+            toggle.classList.add('listening');
+            toggle.innerText = 'Listening ...';
+            speech.recognition.start();
+        }
+        else {
+            toggle.classList.remove('listening');
+            toggle.innerText = 'Toggle listening';
+            speech.recognition.stop();
+        }
+    })
+}
+return null;
 }
 
 function populateAssessmentForms(result) {
-    var el = HTMLElement;
+    console.log("populateAssessmentForms is here!")
+    var el;
     var question = "";
     var answer = "";
     switch (true) {
-        case speech.text.includes("first name"):
+        case result.includes("full name"):
             question = "What is the patient's full name?";
-            el.document.getElementById('firstNameInput');
-            el.value = await getPrompt(question, answer);
+            el = document.getElementById("firstNameInput");
+            if (el.id != null) {
+                el.value = getPrompt(question, answer);
+            }
+            else {
+                console.log('DOM.el is NULL')
+            }
             break;
         default:
             console.log('Invalid grade.');
