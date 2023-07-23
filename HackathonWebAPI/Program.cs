@@ -1,7 +1,13 @@
 using HackathonWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("local.appsettings.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddDbContext<HackathonDbContext>(options =>
@@ -21,6 +27,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Add CORS configuration here
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
 
 app.UseAuthorization();
 

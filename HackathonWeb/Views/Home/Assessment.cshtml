@@ -1,4 +1,4 @@
-﻿
+﻿@model HackathonWebAPI.Models.Member
 @{
     ViewData["Title"] = "Record Assessment";
 }
@@ -6,14 +6,40 @@
 <div class="text-center">
     <h1>@ViewData["Title"]</h1>
 
-    <div>
-        <button id="startButton">Start Recording</button>
-        <div id="result" class="div2"></div>
-        <div id="output" class="div2"></div>
-        <div id="eventListener" class="div2"></div>
-    </div>
-    <div>
-        <button id="stopButton">Stop Recording</button>
+    
+
+    <div class="row">
+        <div class="col-md-5">
+            <form asp-action="PostMember">
+                <div class="row">
+                    <code id="result">live transcript here ...</code>
+                    <div id="output"></div>
+                    <span>
+                        <button type="button" id="toggle">Toggle listening</button>
+                    </span>
+
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label" id="firstNameLabel"></label>
+                    <input asp-for="FirstName" class="form-control" id="firstNameInput" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedDate" class="control-label"></label>
+                    <input asp-for="CreatedDate" class="form-control" />
+                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" onclick="goBack();" />
+                </div>
+            </form>
+        </div>
     </div>
 
 </div>
@@ -28,3 +54,12 @@
         margin-top: 20px; /* Adds space at the top */
     }
 </style>
+<script>
+    //goBack();
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
