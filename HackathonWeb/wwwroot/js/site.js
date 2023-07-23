@@ -111,8 +111,6 @@ function init() {
         }
     })
 }
-return null;
-}
 
 function populateAssessmentForms(result) {
     console.log("populateAssessmentForms is here!")
