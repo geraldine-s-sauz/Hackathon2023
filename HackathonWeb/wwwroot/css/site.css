@@ -1,4 +1,4 @@
-html {
+/**/html {
   font-size: 14px;
 }
 
@@ -14,5 +14,11 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
+    background-image: url('../images/oip.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
+ 
+    
