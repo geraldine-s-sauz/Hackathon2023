@@ -35,12 +35,13 @@ namespace HackathonWebAPI.Controllers
             else
             {
                 OpenAIAPI openAIAPI = new(apiKeys: temp);
-                string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\b"
-                    + "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
-                    + "If yes, respond in a simplest way possible.";
+                string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\n"
+                    //+ "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
+                    + "From this transcript: " + Answer + ", What is the answer for the question: " + Question
+                    + " Answer should be direct.";
                 CompletionRequest completionRequest = new()
                 {
-                    Model = OpenAI_API.Models.Model.DavinciCode,
+                    Model = OpenAI_API.Models.Model.DavinciText,
                     MaxTokens = 200,
                     Prompt = prompt
                 };
@@ -60,7 +61,7 @@ namespace HackathonWebAPI.Controllers
 
                     System.Diagnostics.Debug.WriteLine(firstResult);
 
-                    return Ok(finalResult);
+                    return Ok(firstResult);
                 }
             }
         }
