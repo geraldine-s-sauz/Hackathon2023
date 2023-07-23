@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OpenAI_API;
 using OpenAI_API.Completions;
+using System.Text;
 
 namespace HackathonWebAPI.Controllers
 {
@@ -21,7 +22,7 @@ namespace HackathonWebAPI.Controllers
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("local.appsettings.json")
                 .Build();
 
             string? temp = configuration.GetSection("ApiKeys").GetSection("ApiKey_OpenAI").Value;
@@ -34,15 +35,18 @@ namespace HackathonWebAPI.Controllers
             else
             {
                 OpenAIAPI openAIAPI = new(apiKeys: temp);
+                string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\b"
+                    + "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
+                    + "If yes, respond in a simplest way possible.";
                 CompletionRequest completionRequest = new()
                 {
-                    Prompt = "Does the answer " + "\"" + Answer + "\"" + " answer the question " + "\"" + Question + "\"" + "?. Respond by either YES or NO.",
-                    Model = OpenAI_API.Models.Model.BabbageText,
-                    MaxTokens = 200
+                    Model = OpenAI_API.Models.Model.DavinciCode,
+                    MaxTokens = 200,
+                    Prompt = prompt
                 };
-
+                var finalResult = "";
                 var completions = await openAIAPI.Completions.CreateCompletionAsync(completionRequest);
-                string? result = null;
+                string? firstResult = null;
                 if (!completions.Completions.Any())//completions.Result.completions
                 {
                     return BadRequest();
@@ -51,20 +55,12 @@ namespace HackathonWebAPI.Controllers
                 {
                     foreach (var completion in completions.Completions)//completions.Result.completions
                     {
-                        result += completion.Text;
+                        firstResult += completion.Text;
                     }
-                    System.Diagnostics.Debug.WriteLine(result);
 
-                    if (result.Contains("yes"))
-                    {
-                        CompletionRequest completionRequest2 = new()
-                        {
-                            Prompt = "Please paraphrase this for me " + result,
-                            Model = OpenAI_API.Models.Model.BabbageText,
-                            MaxTokens = 200
-                        };
-                    }
-                    return Ok(result);
+                    System.Diagnostics.Debug.WriteLine(firstResult);
+
+                    return Ok(finalResult);
                 }
             }
         }
