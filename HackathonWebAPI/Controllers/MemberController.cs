@@ -10,9 +10,9 @@ namespace HackathonWebAPI.Controllers
     [ApiController]
     public class MemberController : ControllerBase
     {
-        private readonly MemberDbContext _dataContext;
+        private readonly HackathonDbContext _dataContext;
 
-        public MemberController(MemberDbContext dataContext)
+        public MemberController(HackathonDbContext dataContext)
         {
             _dataContext = dataContext;
         }
