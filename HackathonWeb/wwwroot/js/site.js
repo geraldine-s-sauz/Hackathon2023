@@ -45,14 +45,6 @@ function init() {
         speech.recognition.addEventListener('result', (event) => {
             const audio = event.results[event.results.length - 1];
             speech.text = audio[0].transcript;
-            //let tag = document.activeElement.nodeName;
-            //console.log("TAG: " + tag);
-            //if (tag === 'INPUT' || tag === 'TEXTAREA') {
-            //    if (audio.isFinal) {
-            //        document.activeElement.value += speech.text;
-            //        transcribe += speech.text;
-            //    }
-            //}
             result.innerText = speech.text;
             if (audio.isFinal) {
                 //delayedMessage();
@@ -89,6 +81,7 @@ function init() {
         if (typeof result !== "string") {
             throw new Error("valueResult must be a string.");
         }
+
         //does the checking
         switch (true) {
             case result.includes("full name"):
@@ -97,10 +90,17 @@ function init() {
                 el = document.getElementById(getId);
                 el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
-            //break;
+                break;
             case result.includes("health care worker") || result.includes("healthcare worker"):
                 question = "What is the health care worker's full name?";
                 getId = "inputDoctorName";
+                el = document.getElementById(getId);
+                el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
+                transcribe = '';
+                break;
+            case (result.includes("medical conditions")) && (result.includes("this is noted")):
+                question = "What are the patient's medical conditions? Write it in a bullet form.";
+                getId = "inputMedicalConditions";
                 el = document.getElementById(getId);
                 el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
