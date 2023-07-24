@@ -15,10 +15,50 @@ html {
 
 body {
     /*margin-bottom: 60px;*/
-    background-image: url('../images/oip.jpg');
+    /*background-image: url('../images/oip.jpg');*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+} 
+
+.image-container img {
+    /* Set the margin on all sides (top, right, bottom, left) */
+    margin: 20px;
+    /* Or use shorthand notation to set specific margins */
+    /* margin: top right bottom left; */
+    /* margin: 10px 20px 10px 20px; */
+
 }
- 
+/* Indent from the left side */
+.image-container img {
+    margin-left: 100px;
+}
+
+/* Indent from the right side */
+.image-container img {
+    margin-right: 20px;
+}
+
+.same-size {
+    width: 200px;
+    height: 400px;
+}
+
+
+.image-container1 {
+    /* Set the margin on all sides (top, right, bottom, left) */
+    margin: 20px;
+    /* Or use shorthand notation to set specific margins */
+    /* margin: top right bottom left; */
+    /* margin: 10px 20px 10px 20px; */
+}
+/* Indent from the left side */
+.image-container1  {
+        margin-left: 80px;
+    }
+
+/* Indent from the right side */
+.image-container1 {
+    margin-right: 20px;
+}
     

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />*@
     <!-- Site Metas -->
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -38,7 +38,7 @@
     <link href="css/responsive.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/VS_WebApp.styles.css" asp-append-version="true" />
+    
 </head>
 
 <body>
@@ -47,7 +47,7 @@
     <!-- header section strats -->
     <header class="header_section">
         <div class="header_top">
-            <div class="container">
+            @*<div class="container">
                 <div class="contact_nav">
                     <a href="">
                         <i class="fa fa-phone" aria-hidden="true"></i>
@@ -68,13 +68,18 @@
                         </span>
                     </a>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="header_bottom">
             <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg custom_nav-container ">
+               
+                <nav class="navbar navbar-expand-lg custom_nav-container">
+                     
                     <a class="navbar-brand" href="index.html">
-                        <img src="images/logo.jpg" alt="">
+                        <span class="visually-hidden">Nav</span>
+                        <div class="image-container1">
+                        <img src="images/logo.png" style="width:80px;" alt="">
+                        </div>
                     </a>
 
 
@@ -107,7 +112,8 @@
                                 </span>
                             </a>
                             <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit" aria-label="Menu" >
+                                    <span class="visually-hidden">Submit</span>
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
                             </form>
@@ -123,12 +129,43 @@
         <div class="dot_design">
             <img src="images/dots.png" alt="">
         </div>
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-2">
+                    </div>
+                <div class="col-md-6">
+                    <div class="detail-box image-container img">
+                        <div class="play_btn">
+            <button> 
+                <span class="visually-hidden">Button</span>
+                <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            </div >
+                <h1>
+                    Vox <br>
+            <span>
+                Scribe
+            </span>
+                </h1>
+        <p>
+        <!-- when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to -->
+        </p>
+            <a href="">
+            Contact Us
+            </a>
+                    </div>
+                </div>
+
+                
+            </div>
+             
+        </div>
         <div id="customCarousel1" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="container ">
                         <div class="row">
-                            <div class="col-md-6">
+                            @*<div class="col-md-6">
                                 <div class="detail-box">
                                     <div class="play_btn">
                                         <button>
@@ -149,10 +186,10 @@
                                         Contact Us
                                     </a>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div>*@
+                            <div class="col-md-10">
                                 <div class="img-box">
-                                    <img src="images/slider-img.webp" alt="">
+                                    <img src="images/slider-img.webp" class="same-size" alt="">
                                 </div>
                             </div>
                         </div>
@@ -161,7 +198,7 @@
                 <div class="carousel-item">
                     <div class="container ">
                         <div class="row">
-                            <div class="col-md-6">
+                           @* <div class="col-md-6">
                                 <div class="detail-box">
                                     <div class="play_btn">
                                         <button>
@@ -181,10 +218,10 @@
                                         Contact Us
                                     </a>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div>*@
+                            <div class="col-md-10">
                                 <div class="img-box">
-                                    <img src="images/slider-img.webp" alt="">
+                                    <img src="images/slider-img2.jpg" class="same-size" alt="">
                                 </div>
                             </div>
                         </div>
@@ -193,7 +230,7 @@
                 <div class="carousel-item">
                     <div class="container ">
                         <div class="row">
-                            <div class="col-md-6">
+                            @*<div class="col-md-6">
                                 <div class="detail-box">
                                     <div class="play_btn">
                                         <button>
@@ -213,10 +250,10 @@
                                         Contact Us
                                     </a>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div>*@
+                            <div class="col-md-10">
                                 <div class="img-box">
-                                    <img src="images/slider-img.webp" alt="">
+                                    <img src="images/slider-img3.jpg" class="same-size" alt="">
                                 </div>
                             </div>
                         </div>
@@ -237,7 +274,7 @@
 
     </section>
     <!-- end slider section -->
-    </div>
+    @*</div>*@
 
 
     <!-- book section -->
@@ -271,7 +308,7 @@
                         </div>
                         <div class="form-row ">
                             <div class="form-group col-lg-4">
-                                <label for="inputPatientName">Patient Name </label>
+                                <label for="inputPatientName">Patient's' Name </label>
                                 <input type="text" class="form-control" id="inputPatientName" placeholder="">
                             </div>
                             <div class="form-group col-lg-4">
@@ -329,14 +366,14 @@
             <div class="row">
                 <div class="col-md-6 ">
                     <div class="img-box">
-                        <img src="images/about-img.jpg" alt="">
+                       @* <img src="images/about-img.jpg" alt="">*@
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
-                                <span>About Us</span>
+                                @*<span>About Us</span>*@
                             </h2>
                         </div>
                         <p>
@@ -806,8 +843,8 @@
     <footer class="footer_section">
         <div class="container">
             <p>
-                &copy; <span id="displayYear"></span> All Rights Reserved By
-                <a href="https://html.design/">Free Html Templates</a>
+                &copy; <span id="displayYear"></span> All Rights Reserved
+                @*<a href="https://html.design/">Free Html Templates</a>*@
             </p>
         </div>
     </footer>
@@ -816,12 +853,10 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <!-- bootstrap js -->
     <script src="js/bootstrap.js"></script>
-    <!-- nice select -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
-    <!-- owl slider -->
+      <!-- owl slider -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <!-- datepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    
     <!-- custom js -->
     <script src="js/custom.js"></script>
 
