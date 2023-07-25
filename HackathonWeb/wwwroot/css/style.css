@@ -118,12 +118,16 @@ a:focus {
 }
 
 .navbar-brand {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   padding: 15px 35px;
+  height: 100px;
+  /*width: 200px;
+  height: 400px*/;
 }
 
 .navbar-brand img {
   width: 55px;
+  
 }
 
 .custom_nav-container {
@@ -423,7 +427,7 @@ a:focus {
 }
 
 .slider_section .img-box img {
-  width: 100%;
+  width: 800px;
 }
 
 .slider_section .carousel_btn-box {

@@ -38,7 +38,7 @@ namespace HackathonWebAPI.Controllers
                 string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\n"
                     //+ "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
                     + "From this transcript: " + Answer + ", What is the answer for the question: " + Question
-                    + " Answer should be direct.";
+                    + " Please answer directly. You do not need to repeat the question.";
                 CompletionRequest completionRequest = new()
                 {
                     Model = OpenAI_API.Models.Model.DavinciText,

@@ -7,19 +7,6 @@ function getYear() {
 
 getYear();
 
-// nice select
-$(document).ready(function () {
-    $('select').niceSelect();
-});
-
-// date picker
-$(function () {
-    $("#inputDate").datepicker({
-        autoclose: true,
-        todayHighlight: true
-    }).datepicker('update', new Date());
-});
-
 // owl carousel slider js
 $('.team_carousel').owlCarousel({
     loop: true,
