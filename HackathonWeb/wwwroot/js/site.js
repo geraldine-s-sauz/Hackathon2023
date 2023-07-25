@@ -11,13 +11,6 @@ function goBack() {
     window.history.back();
 }
 
-//async function resetTranscribeAfterDelay() {
-//    await setTimeout(() => {
-//        transcribe = ''; // Set transcribe to an empty string
-//        console.log("transcribe is now null");
-//    }, 5000); // 2000 milliseconds = 2 seconds
-//}
-
 $(function () {
     //used to call the init() function after a successful load from the HTML.
     init();
