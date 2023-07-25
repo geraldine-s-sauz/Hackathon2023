@@ -11,8 +11,8 @@ namespace QuestionAnsweringSampleCode
     {
         private static void Main()
         {
-            Uri endpoint = new Uri("https://voxscribelanguageservice.cognitiveservices.azure.com/");
-            AzureKeyCredential credential = new AzureKeyCredential("f9912326eba444d3a4eec9858baed7c4");
+            Uri endpoint = new Uri("https://eastasialanguageservice.cognitiveservices.azure.com/");
+            AzureKeyCredential credential = new AzureKeyCredential("385f523ff29c4903bf421af38eff988f");
             QuestionAnsweringClient client = new QuestionAnsweringClient(endpoint, credential);
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string transcriptPath = Path.Combine(sCurrentDirectory, @"..\..\SampleFiles\SampleTranscript.txt");

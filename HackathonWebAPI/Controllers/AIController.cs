@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OpenAI_API;
 using OpenAI_API.Completions;
-using System.Text;
 
 namespace HackathonWebAPI.Controllers
 {
@@ -18,7 +17,7 @@ namespace HackathonWebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<OpenAI>> GetPrompt(string Question, string Answer)
+        public async Task<ActionResult<string>> GetPrompt(string Question, string Answer)
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -26,7 +25,8 @@ namespace HackathonWebAPI.Controllers
                 .Build();
 
             string? temp = configuration.GetSection("ApiKeys").GetSection("ApiKey_OpenAI").Value;
-            System.Diagnostics.Debug.WriteLine("APIKEY IS: " + temp);
+            string? firstResult = null;
+            //System.Diagnostics.Debug.WriteLine("APIKEY IS: " + temp);
 
             if (string.IsNullOrEmpty(temp))
             {
@@ -45,9 +45,8 @@ namespace HackathonWebAPI.Controllers
                     MaxTokens = 200,
                     Prompt = prompt
                 };
-                var finalResult = "";
                 var completions = await openAIAPI.Completions.CreateCompletionAsync(completionRequest);
-                string? firstResult = null;
+
                 if (!completions.Completions.Any())//completions.Result.completions
                 {
                     return BadRequest();

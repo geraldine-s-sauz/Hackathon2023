@@ -11,8 +11,7 @@ function goBack() {
     window.history.back();
 }
 
-$(function () {
-    //used to call the init() function after a successful load from the HTML.
+$(document).ready(function () {
     init();
 });
 
@@ -23,6 +22,10 @@ function init() {
 
     const result = document.getElementById('result'); // Assuming you have an HTML element with the ID 'result'
     const toggle = document.getElementById('toggle'); // Assuming you have an HTML element with the ID 'toggle'
+    const btnAssessment = document.getElementById('btnCompleteAssessment'); // Assuming you have an HTML element with the ID 'toggle'
+    btnAssessment.addEventListener('click', () => {
+        GetQnA();
+    })
 
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
@@ -41,7 +44,8 @@ function init() {
             result.innerText = speech.text;
             if (audio.isFinal) {
                 //delayedMessage();
-                transcribe += speech.text;
+                transcribe = transcribe + " " + speech.text;
+                transcribe = transcribe.toLowerCase();
                 console.log("TRANSCRIBE: \n" + transcribe + "\n");
                 populateAssessmentForms(transcribe);
                 //resetTranscribeAfterDelay();
@@ -75,29 +79,36 @@ function init() {
             throw new Error("valueResult must be a string.");
         }
 
+        //var tempString = "Have you experienced any medical conditions today? Yeah, I've got hypertension and arthritis. I take amlodipine or amlodipine. I'm quite unsure. I'm a Lady Pin. That's right. That medication for my blood pressure and ibuprofen when my joints act up. And I also had a nephritis when I was young. Sporadic migraines pop up sometimes too, but I manage them with rest and Sumatriptan when needed. This is noted.";
+
+        //if (tempString.includes('medical conditions') && tempString.includes('this is noted')) {
+        //    console.log("Both 'medical conditions' and 'this is noted' are present in the string.");
+        //};
+
         //does the checking
         switch (true) {
-            case result.includes("full name"):
+            case result.includes('full name') && result.includes('patient'):
                 question = "What is the patient's full name?";
                 getId = "inputPatientName";
                 el = document.getElementById(getId);
                 el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
-            case result.includes("health care worker") || result.includes("healthcare worker"):
+            case result.includes('health care worker') || result.includes('healthcare worker'):
                 question = "What is the health care worker's full name?";
                 getId = "inputDoctorName";
                 el = document.getElementById(getId);
                 el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
-            case (result.includes("medical conditions")) && (result.includes("this is noted")):
-                question = "What are the patient's medical conditions? Write it in a bullet form.";
+            case result.includes('medical conditions') && result.includes('this is noted'):
+                question = "What are the patient's medical conditions? Write it in a bullet form where Medication name is incidated paired with a brief explanation.";
                 getId = "inputMedicalConditions";
                 el = document.getElementById(getId);
                 el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
+
             default:
                 console.log('end of swtich');
                 break;

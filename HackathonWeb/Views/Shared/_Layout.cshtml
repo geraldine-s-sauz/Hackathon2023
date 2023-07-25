@@ -17,7 +17,7 @@
     <title>VoxScribe</title>
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap.css">
 
     <!-- fonts style -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@
                 <div class="col-md-6">
                     <div class="detail-box image-container img">
                         <div class="play_btn">
-                            <button>
+                            <button id="toggle">
                                 <span class="visually-hidden">Button</span>
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </button>
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="carousel-item">
+                
                 <div class="carousel-item">
                     <div class="container ">
                         <div class="row">
@@ -152,7 +152,6 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-
                     <div class="container ">
                         <div class="row">
                             <div class="col-md-10">
@@ -162,10 +161,9 @@
                             </div>
                         </div>
                     </div>
-                </div>*@
+                </div>
             </div>
         </div>
-
     </section>
     <!-- end slider section -->
     <!-- book section -->
@@ -186,7 +184,7 @@
                 <!-- Replace 'mt-3' with the desired spacing class (mt for margin-top or mb for margin-bottom) and adjust the number to set the desired space -->
                 <div class="col text-center">
                     <!-- Add 'text-center' class here -->
-                    <button class="btn btn-primary" type="submit">Complete assessment.</button>
+                    <button class="btn btn-primary" type="submit" id="btnCompleteAssessment" >Complete assessment.</button>
                     <div class="mt-3"></div> <!-- Add a spacer with 'mt-3' class -->
                     <!-- Replace 'mt-3' with the desired spacing class (mt for margin-top or mb for margin-bottom) and adjust the number to set the desired space -->
                 </div>
@@ -209,41 +207,38 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col">
                                 <label for="inputPatientName">Patient's' Name </label>
                                 <input type="text" class="form-control" id="inputPatientName" placeholder="">
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col">
                                 <label for="inputDoctorName">Health Coordinator's Name</label>
                                 <input type="text" class="form-control" id="inputDoctorName" placeholder="">
                             </div>
                         </div>
-                        <div class="form-row ">
-                            <div class="form-group col-lg-4">
+                        <div class="form-row">
+                            <div class="form-group col">
                                 <label for="inputAllergies">Medical Conditions</label>
                                 <textarea class="form-control" id="inputMedicalConditions" style="width:100%; height:300px;" placeholder=""></textarea>
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col">
                                 <label for="inputMedications">Medications</label>
                                 <textarea class="form-control" id="inputMedications" style="width:100%; height:300px;" placeholder=""></textarea>
                             </div>
-                            <div class="form-group col-lg-4">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
                                 <label for="inputVH">Vaccine History</label>
                                 <textarea class="form-control" id="inputVH" style="width:100%; height:300px;" placeholder=""></textarea>
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col">
                                 <label for="inputMH">Medical History</label>
                                 <textarea class="form-control" id="inputMH" style="width:100%; height:300px;" placeholder=""></textarea>
-
                             </div>
-                            <div class="form-group col-lg-4">
-                                <label for="inputAddInfo">Additional Information</label>
-                                <textarea class="form-control" id="inputAddInfo" style="width:100%; height:300px;" placeholder=""></textarea>
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label for="inputNote">Notes</label>
-                                <textarea class="form-control" id="inputNote" style="width:100%; height:300px;" placeholder=""></textarea>
-                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <label for="inputNote">Notes</label>
+                            <textarea class="form-control" id="inputNote" style="width:100%; height:300px;" placeholder=""></textarea>
                         </div>
                         <div class="btn-box">
                             <button type="submit" class="btn ">Submit Now</button>
