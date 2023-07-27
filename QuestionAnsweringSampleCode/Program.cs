@@ -1,13 +1,12 @@
 ﻿using Azure;
 using Azure.AI.Language.QuestionAnswering;
-using Azure.AI.TextAnalytics;
 
 namespace QuestionAnsweringSampleCode
 {
-    class Program : ConversationSummarization
+    class Program
     {
-        private static readonly Uri endpoint = new Uri("https://voxscribelanguageservice.cognitiveservices.azure.com/");
-        private static readonly AzureKeyCredential credential = new AzureKeyCredential("f9912326eba444d3a4eec9858baed7c4");
+        private static readonly Uri endpoint = new Uri("https://eastasialanguageservice.cognitiveservices.azure.com/");
+        private static readonly AzureKeyCredential credential = new AzureKeyCredential("385f523ff29c4903bf421af38eff988f");
 
         static void Main(string[] args)
         {

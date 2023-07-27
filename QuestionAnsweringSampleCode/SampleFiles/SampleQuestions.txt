@@ -1,3 +1,4 @@
-What is the interviewee's name?
+What is the agent's name?
+What is the customer's name?
 What was the date and time of the accident?
 What street were you on?
