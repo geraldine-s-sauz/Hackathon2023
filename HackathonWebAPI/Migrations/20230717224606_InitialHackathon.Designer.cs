@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HackathonWebAPI.Migrations
 {
-    [DbContext(typeof(MemberDbContext))]
-    [Migration("20230716190621_Initial")]
-    partial class Initial
+    [DbContext(typeof(HackathonDbContext))]
+    [Migration("20230717224606_InitialHackathon")]
+    partial class InitialHackathon
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,25 @@ namespace HackathonWebAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("HackathonWebAPI.Models.AssessmentQuestions", b =>
+                {
+                    b.Property<string>("QuestionId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Question1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("QuestionId");
+
+                    b.ToTable("AssessmentQuestions");
+                });
 
             modelBuilder.Entity("HackathonWebAPI.Models.Member", b =>
                 {

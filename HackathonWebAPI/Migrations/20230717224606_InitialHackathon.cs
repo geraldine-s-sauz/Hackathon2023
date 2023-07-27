@@ -6,11 +6,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HackathonWebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialHackathon : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AssessmentQuestions",
+                columns: table => new
+                {
+                    QuestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Question1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Question2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Question3 = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssessmentQuestions", x => x.QuestionId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Member",
                 columns: table => new
@@ -29,6 +43,9 @@ namespace HackathonWebAPI.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AssessmentQuestions");
+
             migrationBuilder.DropTable(
                 name: "Member");
         }

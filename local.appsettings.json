@@ -1,16 +1,9 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
   "ConnectionStrings": {
     "HackathonCS": "Server=(localdb)\\mssqllocaldb;Database=HackathonDB;Trusted_Connection=True;MultipleActiveResultSets=true"
   },
   "ApiKeys": {
     "ApiKey_OpenAI": "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",
     "ApiKey_Cognitive": "f9912326eba444d3a4eec9858baed7c4"
-  },
-  "AllowedHosts": "*"
+  }
 }
