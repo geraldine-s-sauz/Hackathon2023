@@ -23,8 +23,9 @@ function init() {
     const result = document.getElementById('result'); // Assuming you have an HTML element with the ID 'result'
     const toggle = document.getElementById('toggle'); // Assuming you have an HTML element with the ID 'toggle'
     const btnAssessment = document.getElementById('btnCompleteAssessment'); // Assuming you have an HTML element with the ID 'toggle'
+
     btnAssessment.addEventListener('click', () => {
-        GetQnA();
+        completeAssessment();
     })
 
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -68,6 +69,109 @@ function init() {
         })
     }
 
+    //function when user clicks 'Complete Assessment', it will complete the assessment
+    async function completeAssessment() {
+        var el;
+        var question = "";
+        var answer = result;
+        var getId = "";
+
+        switch (true) {
+            //case false:
+            //    question = "What is the patient's name?";
+            //    getId = "inputPatientName";
+            //    el = document.getElementById(getId);
+            //    if ((el.id == getId) && (el.value == ''))
+            //    {
+            //        el.value = await getPromptFromTranscription(question)
+            //        transcribe = '';
+            //        break;
+            //    };
+            //case false:
+            //    question = "What is the healthcare worker's name?";
+            //    getId = "inputDoctorName";
+            //    el = document.getElementById(getId);
+            //    if ((el.id == getId) && (el.value == '')) {
+            //        el.value = await getPromptFromTranscription(question)
+            //        transcribe = '';
+            //        break;
+            //    };
+            case true:
+                question = "Briefy explain the patient's allergies, if any. If possible, write it in a bullet form.";
+                getId = "inputAllergies";
+                el = document.getElementById(getId);
+                if ((el.id == getId) && (el.value == '')) {
+                    el.value = await getPromptFromTranscription(question)
+                    transcribe = '';
+                    break;
+                };
+            //case false:
+            //    question = "Briefy explain the medical conditions of the patient, if any. If possible, write it in a bullet form.";
+            //    getId = "inputMedicalCondition";
+            //    el = document.getElementById(getId);
+            //    if ((el.id == getId) && (el.value == '')) {
+            //        el.value = await getPromptFromTranscription(question)
+            //        transcribe = '';
+            //        break;
+            //    };
+            case true:
+                question = "Briefy explain the vaccine history of the patient. If possible, write it in a bullet form.";
+                getId = "inputVH";
+                el = document.getElementById(getId);
+                if ((el.id == getId) && (el.value == '')) {
+                    el.value = await getPromptFromTranscription(question)
+                    transcribe = '';
+                    break;
+                };
+            case true:
+                question = "Briefy explain the medical history of the patient. If possible, write it in a bullet form.";
+                getId = "inputMH";
+                el = document.getElementById(getId);
+                if ((el.id == getId) && (el.value == '')) {
+                    el.value = await getPromptFromTranscription(question)
+                    transcribe = '';
+                    break;
+                };
+            case true:
+                question = "Briefly summarize the whole conversation between the healthcare worker and patient. If possible, write the key points.";
+                getId = "inputSummary";
+                el = document.getElementById(getId);
+                if ((el.id == getId) && (el.value == '')) {
+                    el.value = await getPromptFromTranscription(question)
+                    transcribe = '';
+                    break;
+                };
+            default:
+                console.log('end of swtich');
+                break;
+        }
+    }
+
+    //function to call OpenAI based on question and sample transcript
+    async function getPromptFromTranscription(question) {
+        if (typeof question !== "string") {
+            throw new Error("valueResult must be a string.");
+        }
+        console.log("COMPLETING THE ASSESSMENT NOW");
+        try {
+            const completeAssessmentResponse = await fetch(`https://localhost:44337/api/OpenAI/GetPromptFromTranscript?Question=${encodeURIComponent(question)}`);
+
+            if (completeAssessmentResponse.ok) {
+                const data = await completeAssessmentResponse.text(); // Parse the response as text
+                console.log("Response received: ", data);
+                return data; // Return the parsed data
+            } else {
+                // Handle the error here
+                document.getElementById('output').innerText = 'Error occurred during the API call.';
+            }
+
+        } catch (error) {
+            // Handle any network or other errors here
+            document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        }
+    }
+
+    //function to populate the assessment based on verbiage.
     async function populateAssessmentForms(result) {
         console.log("populateAssessmentForms is here!")
         var el;
@@ -116,10 +220,11 @@ function init() {
         return null;
     }
 
+    //function to call OpenAI based on question and answer.
     async function getPrompt(question, answer) {
         console.log("I am in getPrompt");
         try {
-            const response = await fetch(`https://localhost:44337/api/OpenAI?Question=${encodeURIComponent(question)}&Answer=${encodeURIComponent(answer)}`);
+            const response = await fetch(`https://localhost:44337/api/OpenAI/GetPrompt?Question=${encodeURIComponent(question)}&Answer=${encodeURIComponent(answer)}`);
 
             if (response.ok) {
                 const data = await response.text(); // Parse the response as text

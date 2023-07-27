@@ -30,7 +30,7 @@ namespace HackathonWebAPI.Controllers
             string api_OpenAi = configuration.GetSection("ApiKeys").GetSection("ApiKey_OpenAI").Value!;
             Uri endpoint = new("https://eastasialanguageservice.cognitiveservices.azure.com/");
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string transcriptPath = Path.Combine(sCurrentDirectory, @"C:..\..\Hackathon2023\HackathonWebAPI\Models\SampleTranscript.txt");
+            string transcriptPath = Path.Combine(sCurrentDirectory, @"C:..\..\Hackathon2023\HackathonWebAPI\Models\SampleTranscript2.txt");
             string readTranscriptText = System.IO.File.ReadAllText(Path.GetFullPath(transcriptPath));
             string? firstResult = null;
 
@@ -52,17 +52,18 @@ namespace HackathonWebAPI.Controllers
                     System.Diagnostics.Debug.WriteLine($"A{QuestionUI}:{BestAnswer}");
                     System.Diagnostics.Debug.WriteLine($"Confidence Score: ({response.Value.Answers[0].Confidence:P2})"); //:P2 converts the result to a percentage with 2 decimals of accuracy.
 
+                    return Ok(BestAnswer);
                     ////////////////////////////////////////////////// PROCEED WITH OPENAI/////////////////////////////
 
                     OpenAIAPI openAIAPI = new(apiKeys: api_OpenAi);
                     string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\n"
                         //+ "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
-                        + "From this transcript: " + BestAnswer + ", What is the answer for the question: " + QuestionUI
+                        + "From this transcript: " + BestAnswer + ", What is the answer for the question: " + QuestionUI + "\n"
                         + " Please answer directly. You do not need to repeat the question.";
                     CompletionRequest completionRequest = new()
                     {
                         Model = OpenAI_API.Models.Model.DavinciText,
-                        MaxTokens = 200,
+                        MaxTokens = 500,
                         Prompt = prompt
                     };
 

@@ -1,0 +1,58 @@
+INT. COMMUNITY ASSESSMENT - DAY
+
+
+Lisa (HCW): Hi, good day. I am your Health Coordinator Lisa David. 
+
+Pat: Hi Lisa, I am Pat.
+
+Lisa (HCW): How are you today?
+
+Pat: Not so good, I am feeling a bit under the weather today.
+
+Lisa (HCW): I'm sorry to hear that but don't worry, I'm here to assess you and see how we can help.
+
+Pat: Great, thank you
+
+Lisa (HCW): Okay, first, may I know the Patient's Full Name?
+
+Pat: My name is Pat Smith.
+
+Lisa: May I know the Medical Conditions you're dealing with right now?
+
+Pat: I'm having migraines today, could be due to lack of sleep. I usually just manage them with rest and water but
+it is worse this day for some reason.
+
+Lisa (HCW): I'm sorry to hear that. Any particular reason for the lack of sleep? 
+
+Pat: Yeah, just stressed out because of a big presentation coming up.
+
+Lisa: That's understandable. Do you have other Medical History that we should know of?
+
+Pat: Yes, I also have hypertension and arthritis. 
+
+Lisa (HCW) : By any chance are you taking any Medication for these illness?
+
+Pat: Yes, I am taking Amlodipine for my blood pressure and Ibuprofen for when my joints act up.
+
+Lisa: Alright, how about your Vaccine History?
+
+Pat:  I have just gotten my third Pfizer Covid booster a week ago.
+
+Lisa (HCW): Oh, that's great. How are you feeling? Any side effects?
+
+Pat: I'm feeling good, my left arm felt a little heavy but other than that, I did not feel any side effects.
+
+Lisa: How about your first and second vaccine?
+
+Pat (HCW): I first got it last June 2022 and then the second one on January 2023. Luckily I did not feel any side effects either.
+
+Lisa (HCW) : That's good to hear. So that is all for our assessment, any additional information that you might have missed?
+
+Pat: Not that I think of, but if anything else comes up I 'll let you know.
+
+Lisa (HCW): Alright then, I think we are all set here. Thank you so much for your time. Have a great day.
+
+Pat: Thank you too. Have a great day.
+
+Lisa (HCW): To summarize, the patient is suffering from migraine due to stress and lack of sleep. She's taking Amlodipine for hypertension and has history of arthritis. 
+She completed her 3rd doze of covid vaccine a week ago with no side effects.
