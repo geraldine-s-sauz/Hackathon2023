@@ -1,0 +1,10 @@
+﻿{
+  "ConnectionStrings": {
+    "HackathonCS": "Server=(localdb)\\mssqllocaldb;Database=HackathonDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "ApiKeys": {
+    "ApiKey_OpenAI": "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",
+    "ApiKey_Cognitive": "f9912326eba444d3a4eec9858baed7c4",
+    "ApiKey_QnA": "f9912326eba444d3a4eec9858baed7c4"
+  }
+}

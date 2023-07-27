@@ -1,8 +1,6 @@
 ﻿using HackathonWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
-using System.Drawing.Drawing2D;
 
 namespace HackathonWeb.Controllers
 {
@@ -48,6 +46,48 @@ namespace HackathonWeb.Controllers
             {
                 temp.MemberId = Guid.NewGuid().ToString();
                 HttpResponseMessage response = await _httpClient.PostAsJsonAsync(baseAddress + "/Member", temp);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return BadRequest("No data is found in memberList.");
+                }
+                else
+                {
+                    //return RedirectToAction("GetMembers", "MemberViewController");
+                    //System.Diagnostics.Debug.WriteLine(Json(response));
+                }
+            }
+            return View(temp);
+        }
+
+        //GET --for Assessment
+        public async Task<ActionResult<IEnumerable<AssessmentQuestions>>> GetAssessments()
+        {
+            List<AssessmentQuestions>? list;
+            HttpResponseMessage response = await _httpClient.GetAsync(baseAddress + "/Assessment");
+            if (!response.IsSuccessStatusCode)
+            {
+                return BadRequest("No data is found in memberList.");
+            }
+            else
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                list = JsonConvert.DeserializeObject<List<AssessmentQuestions>>(data);
+            }
+            return View(list);
+        }
+
+        //POST -- for Assessment
+        public async Task<ActionResult<AssessmentQuestions>> PostAssessment(AssessmentQuestions model)
+        {
+            AssessmentQuestions temp = model;
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError(string.Empty, "Error creating the resource.");
+            }
+            else
+            {
+                temp.QuestionId = Guid.NewGuid().ToString();
+                HttpResponseMessage response = await _httpClient.PostAsJsonAsync(baseAddress + "/Assessment", temp);
                 if (!response.IsSuccessStatusCode)
                 {
                     return BadRequest("No data is found in memberList.");
