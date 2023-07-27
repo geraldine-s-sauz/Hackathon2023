@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<MemberDbContext>(options =>
+builder.Services.AddDbContext<HackathonDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HackathonCS")));
 
 var app = builder.Build();
