@@ -76,6 +76,8 @@ function init() {
         var answer = result;
         var getId = "";
 
+        //testing123
+
         switch (true) {
             //case false:
             //    question = "What is the patient's name?";
