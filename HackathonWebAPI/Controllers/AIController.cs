@@ -97,13 +97,12 @@ namespace HackathonWebAPI.Controllers
                     Model = OpenAI_API.Models.Model.DavinciText,
                     MaxTokens = 500,
                     Prompt = prompt,
-                    
                 };
                 var completions = await openAIAPI.Completions.CreateCompletionAsync(completionRequest);
 
                 if (!completions.Completions.Any())//completions.Result.completions
                 {
-                    System.Diagnostics.Debug.WriteLine("No completions returned. Exit now" );
+                    System.Diagnostics.Debug.WriteLine("No completions returned. Exit now");
                     return BadRequest();
                 }
                 else
@@ -120,6 +119,4 @@ namespace HackathonWebAPI.Controllers
             }
         }
     }
-
-
 }
