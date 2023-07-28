@@ -35,7 +35,7 @@ namespace QuestionAnsweringSampleCode
 
                         Console.WriteLine($"Q:{options.Question}");
                         Console.WriteLine($"A:{BestAnswer}");
-                        Console.WriteLine($"Confidence Score: ({response.Value.Answers[0].Confidence:P2})"); //:P2 converts the result to a percentage with 2 decimals of accuracy. 
+                        Console.WriteLine($"Confidence Score: ({response.Value.Answers[0].Confidence:P2})"); //:P2 converts the result to a percentage with 2 decimals of accuracy.
                         break;
                     }
                     else
@@ -46,6 +46,6 @@ namespace QuestionAnsweringSampleCode
                     }
                 }
             }
-        }      
+        }
     }
 }

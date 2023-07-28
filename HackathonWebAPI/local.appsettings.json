@@ -3,8 +3,8 @@
     "HackathonCS": "Server=(localdb)\\mssqllocaldb;Database=HackathonDB;Trusted_Connection=True;MultipleActiveResultSets=true"
   },
   "ApiKeys": {
-    "ApiKey_OpenAI": "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",
+    "ApiKey_OpenAI": "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",
     "ApiKey_Cognitive": "f9912326eba444d3a4eec9858baed7c4",
-    "ApiKey_QnA": "f9912326eba444d3a4eec9858baed7c4"
+    "ApiKey_QnA": "385f523ff29c4903bf421af38eff988f"
   }
 }
