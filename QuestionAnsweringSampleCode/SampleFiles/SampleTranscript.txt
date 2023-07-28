@@ -1,104 +1,33 @@
-Interviewer
-Okay. This is Mae Yamada. Today’s date is February 6, 2007. The time is approximately 9:25 AM; that’s Pacific Time. Do you understand that this is being recorded and do I have your permission to do so?
-
-Interviewee
-Yes, ma’am.
-
-Interviewer
-Okay. Please state your full name.
-
-Interviewee
-Kenji Han.
-
-Interviewer
-Okay, Kenji Han. When was the date of loss?
-
-Interviewee
-What is…
-
-Interviewer
-When did the accident happen?
-
-Interviewee
-It was yesterday. What was the date yesterday?
-
-Interviewer
-Okay.
-
-Interviewee
-The 5th of January.
-
-Interviewer
-Okay. About what time?
-
-Interviewee
-Let’s see. It was about… I want to say 9:30. I’m not exactly sure on that.
-
-Interviewer
-Is that…
-
-Interviewee
-I want to say around 9:30, guilt/ashamed.
-
-Interviewer
-AM, right?
-
-Interviewee
-Yes.
-
-Interviewer
-How was the weather at the time?
-
-Interviewee
-The weather was… It was a little bit brisk, a little bit cold, but besides that, I mean…
-
-Interviewer
-It wasn’t snowing or anything, right?
-
-Interviewee
-No. No snow.
-
-Interviewer
-Okay. What street were you on?
-
-Interviewee
-I was turning from the ___ Condominiums. I was turning from out of there, like exit or entrance to the main office because I just went there to see a friend, to actually take care of another, like article that they had put on my door, and I was leaving, so…
-
-Interviewer
-Okay. So, you were in the parking lot at the time. Were you pulling out to a main street, avenue?
-
-Interviewee
-Well, I was pulling out onto Denver Road, that’s…
-
-Interviewer
-Okay.
-
-Interviewee
-That’s right off, so…
-
-Interviewer
-Okay. So, tell me what happened once you stopped at the stop line or stoplight to pull out?
-
-Interviewee
-Okay. I was just stopped. Well, it’s not a stop sign, but I was just pulling out onto the Airport Road from the employee housing, so…
-
-Interviewer
-Okay. There is…
-
-Interviewee
-…on there, just stopped, getting ready to pull out left, and…
-
-Interviewer
-Okay. There’s no traffic device?
-
-Interviewee
-What’s that?
-
-Interviewer
-There’s no traffic device? There’s no light, no stop sign?
-
-Interviewee
-No, there’s not. There might be a stop sign, but I’m pretty sure there’s not because it’s just pulling out of like some apartments. I don’t know if that had a stop sign or not. But I was stopped regardless, I guess.
-
-Interviewer
-Okay.
+Agent: Hi, this is your aganet Mae Yamada. Today’s date is February 6, 2007. The time is approximately 9:25 AM; that’s Pacific Time. Do you understand that this is being recorded and do I have your permission to do so?
+Customer: Yes, ma’am.
+Agent: Okay. Please state your full name.
+Customer: Kenji Han.
+Agent: Okay, Kenji Han. When was the date of loss?
+Customer: What is…
+Agent: When did the accident happen?
+Customer: It was yesterday, the 5th of January.
+Agent: Okay. About what time?
+Customer: Let’s see. It was about… I want to say 9:30. I’m not exactly sure on that.
+Agent: Is that…
+Customer: I want to say around 9:30, guilt/ashamed.
+Agent: AM, right?
+Customer: Yes.
+Agent: How was the weather at the time?
+Customer: The weather was… It was a little bit brisk, a little bit cold, but besides that, I mean…
+Agent: It wasn’t snowing or anything, right?
+Customer: No. No snow.
+Agent: Okay. What street were you on?
+Customer: I was turning from the ___ Condominiums. I was turning from out of there, like exit or entrance to the main office because I just went there to see a friend, to actually take care of another, like article that they had put on my door, and I was leaving, so…
+Agent: Okay. So, you were in the parking lot at the time. Were you pulling out to a main street, avenue?
+Customer: Well, I was pulling out onto Denver Road, that’s…
+Agent: Okay.
+Customer: That’s right off, so…
+Agent: Okay. So, tell me what happened once you stopped at the stop line or stoplight to pull out?
+Customer: Okay. I was just stopped. Well, it’s not a stop sign, but I was just pulling out onto the Airport Road from the employee housing, so…
+Agent: Okay. There is…
+Customer: …on there, just stopped, getting ready to pull out left, and…
+Agent: Okay. There’s no traffic device?
+Customer: What’s that?
+Agent: There’s no traffic device? There’s no light, no stop sign?
+Customer: No, there’s not. There might be a stop sign, but I’m pretty sure there’s not because it’s just pulling out of like some apartments. I don’t know if that had a stop sign or not. But I was stopped regardless, I guess.
+Agent: Okay.
