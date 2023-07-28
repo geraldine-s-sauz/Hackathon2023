@@ -1,17 +1,12 @@
 ﻿using Azure;
 using Azure.AI.Language.QuestionAnswering;
-using Azure.AI.TextAnalytics;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace QuestionAnsweringSampleCode
 {
     class Program
     {
-        private static readonly Uri endpoint = new Uri("https://voxscribelanguageservice.cognitiveservices.azure.com/");
-        private static readonly AzureKeyCredential credential = new AzureKeyCredential("f9912326eba444d3a4eec9858baed7c4");
+        private static readonly Uri endpoint = new Uri("https://eastasialanguageservice.cognitiveservices.azure.com/");
+        private static readonly AzureKeyCredential credential = new AzureKeyCredential("385f523ff29c4903bf421af38eff988f");
 
         static void Main(string[] args)
         {
@@ -38,10 +33,9 @@ namespace QuestionAnsweringSampleCode
                     {
                         string BestAnswer = response.Value.Answers[0].ShortAnswer.Text;
 
-                        Console.WriteLine($"Q{question.Count()}:{options.Question}");
-                        Console.WriteLine($"A{question.Count()}:{BestAnswer}");
-                        Console.WriteLine($"Confidence Score: ({response.Value.Answers[0].Confidence:P2})"); //:P2 converts the result to a percentage with 2 decimals of accuracy.
-                        Console.WriteLine("\b");
+                        Console.WriteLine($"Q:{options.Question}");
+                        Console.WriteLine($"A:{BestAnswer}");
+                        Console.WriteLine($"Confidence Score: ({response.Value.Answers[0].Confidence:P2})"); //:P2 converts the result to a percentage with 2 decimals of accuracy. 
                         break;
                     }
                     else

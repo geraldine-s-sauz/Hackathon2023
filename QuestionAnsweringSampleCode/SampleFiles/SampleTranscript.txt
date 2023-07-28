@@ -1,13 +1,11 @@
-Agent: Okay. This is Mae Yamada. Today’s date is February 6, 2007. The time is approximately 9:25 AM; that’s Pacific Time. Do you understand that this is being recorded and do I have your permission to do so?
+Agent: Hi, this is your aganet Mae Yamada. Today’s date is February 6, 2007. The time is approximately 9:25 AM; that’s Pacific Time. Do you understand that this is being recorded and do I have your permission to do so?
 Customer: Yes, ma’am.
 Agent: Okay. Please state your full name.
 Customer: Kenji Han.
 Agent: Okay, Kenji Han. When was the date of loss?
 Customer: What is…
 Agent: When did the accident happen?
-Customer: It was yesterday. What was the date yesterday?
-Agent: Okay.
-Customer: The 5th of January.
+Customer: It was yesterday, the 5th of January.
 Agent: Okay. About what time?
 Customer: Let’s see. It was about… I want to say 9:30. I’m not exactly sure on that.
 Agent: Is that…
