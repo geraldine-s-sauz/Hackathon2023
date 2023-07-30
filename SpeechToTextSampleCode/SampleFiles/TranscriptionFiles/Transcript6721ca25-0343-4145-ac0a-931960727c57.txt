@@ -1,0 +1,7 @@
+
+Guest_0: Good morning, Steve.
+Guest_1: Good morning, Katie.
+Guest_0: Have you heard about the new conversation transcription capability?
+Unidentified: No. Tell me more.
+Guest_0: It's the new feature that transcribes our discussion and lets us know who said what.
+Unidentified: That sounds interesting. I'm going to give this a try.

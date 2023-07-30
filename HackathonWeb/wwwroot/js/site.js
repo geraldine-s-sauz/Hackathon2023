@@ -149,6 +149,43 @@ function init() {
         }
     }
 
+    async function getFromMicrophone() {
+        try {
+            const response = await fetch(`https://localhost:44337/api/QuestionAnswer?QuestionUI=${encodeURIComponent(question)}`);
+
+            if (response.ok) {
+                const data = await response.text(); // Parse the response as text
+                console.log("Response received: ", data);
+                return data; // Return the parsed data
+            } else {
+                // Handle the error here
+                document.getElementById('output').innerText = 'Error occurred during the API call.';
+            }
+        } catch (error) {
+            // Handle any network or other errors here
+            document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        }
+    }
+
+    async function getAzureQnA(question) {
+        console.log("I am in get AzureQnA");
+        try {
+            const response = await fetch(`https://localhost:44337/api/QuestionAnswer?QuestionUI=${encodeURIComponent(question)}`);
+
+            if (response.ok) {
+                const data = await response.text(); // Parse the response as text
+                console.log("Response received: ", data);
+                return data; // Return the parsed data
+            } else {
+                // Handle the error here
+                document.getElementById('output').innerText = 'Error occurred during the API call.';
+            }
+        } catch (error) {
+            // Handle any network or other errors here
+            document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        }
+    }
+
     //function to call OpenAI based on question and sample transcript
     async function getPromptFromTranscription(question) {
         if (typeof question !== "string") {
@@ -166,7 +203,6 @@ function init() {
                 // Handle the error here
                 document.getElementById('output').innerText = 'Error occurred during the API call.';
             }
-
         } catch (error) {
             // Handle any network or other errors here
             document.getElementById('output').innerText = 'An error occurred: ' + error.message;
@@ -197,14 +233,14 @@ function init() {
                 question = "What is the patient's full name?";
                 getId = "inputPatientName";
                 el = document.getElementById(getId);
-                el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
+                el.id == getId ? el.value = await getAzureQnA(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
             case result.includes('health care worker') || result.includes('healthcare worker'):
-                question = "What is the health care worker's full name?";
+                question = "What is the Health Coordinator's full name?";
                 getId = "inputDoctorName";
                 el = document.getElementById(getId);
-                el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
+                el.id == getId ? el.value = await getAzureQnA(question, answer) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
             case result.includes('medical conditions') && result.includes('this is noted'):

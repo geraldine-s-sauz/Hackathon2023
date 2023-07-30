@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="SampleFiles\TranscriptionFiles\" />
+    <Folder Include="SampleFiles\TranscriptionFiles\" />
   </ItemGroup>
 
 </Project>
