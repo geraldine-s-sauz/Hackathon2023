@@ -20,79 +20,37 @@ namespace SpeechToTextSampleCode
             return JsonConvert.SerializeObject(result.Signature);
         }
 
-        public static async Task TranscribeConversationsAsync(SpeechConfig config, string filepath)
+        public static async Task TranscribeConversationsFromFileAsync(SpeechConfig speechConfig, string filepath, string voiceSignatureStringUser1, string voiceSignatureStringUser2)
         {
+            speechConfig.SetProperty("ConversationTranscriptionInRoomAndOnline", "true");
+            speechConfig.SetServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
+
             var stopRecognition = new TaskCompletionSource<int>();
 
             using (var audioInput = AudioConfig.FromWavFileInput(filepath))
             {
-                var meetingID = Guid.NewGuid().ToString();
-                using (var conversation = await Conversation.CreateConversationAsync(config, meetingID))
+                var conversationId = Guid.NewGuid().ToString();
+                using (var conversation = await Conversation.CreateConversationAsync(speechConfig, conversationId))
                 {
-                    // create a conversation transcriber using audio stream input
                     using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                     {
-                        conversationTranscriber.Transcribing += (s, e) =>
-                        {
-                            Console.WriteLine($"TRANSCRIBING: Text={e.Result.Text} SpeakerId={e.Result.UserId}");
-                        };
-
-                        conversationTranscriber.Transcribed += (s, e) =>
-                        {
-                            if (e.Result.Reason == ResultReason.RecognizedSpeech)
-                            {
-                                Console.WriteLine($"TRANSCRIBED: Text={e.Result.Text} SpeakerId={e.Result.UserId}");
-                            }
-                            else if (e.Result.Reason == ResultReason.NoMatch)
-                            {
-                                Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-                            }
-                        };
-
-                        conversationTranscriber.Canceled += (s, e) =>
-                        {
-                            Console.WriteLine($"CANCELED: Reason={e.Reason}");
-
-                            if (e.Reason == CancellationReason.Error)
-                            {
-                                Console.WriteLine($"CANCELED: ErrorCode={e.ErrorCode}");
-                                Console.WriteLine($"CANCELED: ErrorDetails={e.ErrorDetails}");
-                                Console.WriteLine($"CANCELED: Did you set the speech resource key and region values?");
-                                stopRecognition.TrySetResult(0);
-                            }
-                        };
-
-                        conversationTranscriber.SessionStarted += (s, e) =>
-                        {
-                            Console.WriteLine($"\nSession started event. SessionId={e.SessionId}");
-                        };
-
-                        conversationTranscriber.SessionStopped += (s, e) =>
-                        {
-                            Console.WriteLine($"\nSession stopped event. SessionId={e.SessionId}");
-                            Console.WriteLine("\nStop recognition.");
-                            stopRecognition.TrySetResult(0);
-                        };
+                        StartContinuousRecognition(conversationTranscriber);
 
                         // Add participants to the conversation.
-                        //var speaker1 = Participant.From("User1", "en-US", voiceSignatureStringUser1);
-                        //var speaker2 = Participant.From("User2", "en-US", voiceSignatureStringUser2);
-                        //await conversation.AddParticipantAsync(speaker1);
-                        //await conversation.AddParticipantAsync(speaker2);
+                        var speaker1 = Participant.From("Steve", "en-US", voiceSignatureStringUser1);
+                        var speaker2 = Participant.From("Katie", "en-US", voiceSignatureStringUser2);
+                        await conversation.AddParticipantAsync(speaker1);
+                        await conversation.AddParticipantAsync(speaker2);
 
-                        // Join to the conversation and start transcribing
                         await conversationTranscriber.JoinConversationAsync(conversation);
-                        await conversationTranscriber.StartTranscribingAsync().ConfigureAwait(false);
-
-                        // waits for completion, then stop transcription
-                        Task.WaitAny(new[] { stopRecognition.Task });
-                        await conversationTranscriber.StopTranscribingAsync().ConfigureAwait(false);
+                        await GetRecognizerResult(conversationTranscriber, conversationId);
                     }
+                    //await DisplayConversationTranscriptionResults(speechConfig, conversationId);
                 }
             }
         }
-        
-        public static async Task<string> UploadAudio(SpeechConfig speechConfig, string wavFile)
+
+        public static async Task<string> UploadAudioStream(SpeechConfig speechConfig, string wavFile)
         {
             AudioStreamFormat audioStreamFormat;
 
@@ -110,7 +68,7 @@ namespace SpeechToTextSampleCode
                 {
                     StartContinuousRecognition(conversationTranscriber);
                     await conversationTranscriber.JoinConversationAsync(conversation);
-                    var result = await GetRecognizerResult(conversationTranscriber, conversationId);
+                    await GetRecognizerResult(conversationTranscriber, conversationId);
                 }
             }
             return conversationId;
@@ -119,10 +77,10 @@ namespace SpeechToTextSampleCode
         public static async Task StartConversationTranscriptionAsync(SpeechConfig speechConfig, string wavFile)
         {
             // Upload the audio to the service
-            string conversationId = await UploadAudio(speechConfig, wavFile);
+            string conversationId = await UploadAudioStream(speechConfig, wavFile);
 
             // Get remote conversation transcription results
-            //await DisplayConversationTranscriptionResults(speechConfig, conversationId);
+            await DisplayConversationTranscriptionResults(speechConfig, conversationId);
         }
 
         static ConversationTranscriber StartContinuousRecognition(ConversationTranscriber conversationTranscriber)
@@ -158,35 +116,37 @@ namespace SpeechToTextSampleCode
 
             await recognizer.StartTranscribingAsync().ConfigureAwait(false);
 
-            // Waits for completion.
-            // Use Task.WaitAny to keep the task rooted.
             Task.WaitAny(new[] { finishedTaskCompletionSource.Task });
 
             await recognizer.StopTranscribingAsync().ConfigureAwait(false);
         }
 
-        static async Task<List<string>> GetRecognizerResult(ConversationTranscriber recognizer, string conversationId)
+        static async Task GetRecognizerResult(ConversationTranscriber recognizer, string conversationId)
         {
-            List<string> recognizedText = new List<string>();
             string currentDirectory = Directory.GetCurrentDirectory();
-            string filePath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\..\SampleFiles\TranscriptionFiles\Transcript" + $"{conversationId}.txt"));
+            string filePath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\..\SampleFiles\TranscriptionFiles\Transcript_" + $"{conversationId}.txt"));
 
             if (!File.Exists(filePath))
                 File.CreateText(filePath).Dispose();
 
             recognizer.Transcribed += (s, e) =>
             {
-                if (e.Result.Text.Length > 0)
+                if (e.Result.Reason == ResultReason.RecognizedSpeech)
                 {
-                    recognizedText.Add(e.Result.Text);
-                    File.AppendAllText(filePath, Environment.NewLine + $"{e.Result.UserId}: {e.Result.Text}");
+                    Console.WriteLine($"TRANSCRIBED: {e.Result.UserId}: {e.Result.Text}");
+                    if (e.Result.Text.Length > 0)
+                    {
+                        File.AppendAllText(filePath, Environment.NewLine + $"{e.Result.UserId}: {e.Result.Text}");
+                    }
+                }
+                else if (e.Result.Reason == ResultReason.NoMatch)
+                {
+                    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
                 }
             };
-
             await CompleteContinuousRecognition(recognizer);
 
             recognizer.Dispose();
-            return recognizedText;
         }
 
         public static async Task DisplayConversationTranscriptionResults(SpeechConfig speechConfig, string conversationId) 

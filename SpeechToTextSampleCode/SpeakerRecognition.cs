@@ -7,7 +7,7 @@ namespace SpeechToTextSampleCode
     internal class SpeakerRecognition
     {
         static string currentDirectory = Environment.CurrentDirectory;
-        static string wavFile = Path.Combine(currentDirectory, @"SampleFiles\Call1_separated_16k_health_insurance.wav");
+        static string wavFile = Path.Combine(currentDirectory, @"SampleFiles\katiesteve.wav");
 
         public static async Task VerificationEnrollTextDependent(SpeechConfig config, Dictionary<string, string> profileMapping)
         {
@@ -15,11 +15,11 @@ namespace SpeechToTextSampleCode
             using (var profile = await client.CreateProfileAsync(VoiceProfileType.TextDependentVerification, "en-us"))
             {
                 var phraseResult = await client.GetActivationPhrasesAsync(VoiceProfileType.TextDependentVerification, "en-us");
-                using (var audioInput = AudioConfig.FromWavFileInput(wavFile))
+                using (var audioInput = AudioConfig.FromDefaultMicrophoneInput())
                 {
                     Console.WriteLine($"Enrolling profile id {profile.Id}.");
                     // give the profile a human-readable display name
-                    profileMapping.Add(profile.Id, "Your Name");
+                    profileMapping.Add(profile.Id, "Speaker1");
 
                     VoiceProfileEnrollmentResult result = null;
                     while (result is null || result.RemainingEnrollmentsCount > 0)
@@ -42,13 +42,14 @@ namespace SpeechToTextSampleCode
                 }
             }
         }
+
         public static async Task VerificationEnrollTextIndependent(SpeechConfig config, Dictionary<string, string> profileMapping)
         {
             using (var client = new VoiceProfileClient(config))
             using (var profile = await client.CreateProfileAsync(VoiceProfileType.TextIndependentVerification, "en-us"))
             {
                 var phraseResult = await client.GetActivationPhrasesAsync(VoiceProfileType.TextIndependentVerification, "en-us");
-                using (var audioInput = AudioConfig.FromWavFileInput(wavFile))
+                using (var audioInput = AudioConfig.FromDefaultMicrophoneInput())
                 {
                     Console.WriteLine($"Enrolling profile id {profile.Id}.");
                     // give the profile a human-readable display name
@@ -125,6 +126,15 @@ namespace SpeechToTextSampleCode
             Console.WriteLine("Speak some text to identify who it is from your list of enrolled speakers.");
             var result = await speakerRecognizer.RecognizeOnceAsync(model);
             Console.WriteLine($"The most similar voice profile is {profileMapping[result.ProfileId]} with similarity score {result.Score}");
+        }
+
+        public static async Task DeleteProfile(SpeechConfig config, string profileId)
+        {
+            using (var client = new VoiceProfileClient(config))
+            {
+                var profile = new VoiceProfile(profileId);
+                await client.DeleteProfileAsync(profile);
+            }
         }
     }
 }

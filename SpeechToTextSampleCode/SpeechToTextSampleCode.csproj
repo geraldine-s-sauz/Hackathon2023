@@ -17,4 +17,15 @@
     <Folder Include="SampleFiles\TranscriptionFiles\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SampleFiles\enrollment_audio_katie.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\enrollment_audio_steve.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleFiles\TalkForAFewSeconds16.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
