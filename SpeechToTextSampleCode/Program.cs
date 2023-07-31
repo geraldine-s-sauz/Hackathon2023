@@ -3,11 +3,11 @@ using SpeechToTextSampleCode;
 
 namespace QuestionAnsweringSampleCode
 {
-    class Program
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
-            string speechKey  = "e933129a85f04bba9d9342bb456d4697";
+            string speechKey = "e933129a85f04bba9d9342bb456d4697";
             string speechRegion = "eastasia";
 
             SpeechConfig speechconfig = SpeechConfig.FromSubscription(speechKey, speechRegion);
@@ -15,10 +15,10 @@ namespace QuestionAnsweringSampleCode
             string wavFile = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\..\SampleFiles\katiesteve.wav"));
 
             //Conversation Transcription from audio file using Guest/Unidentified speakers
-            await ConversationTranscription.StartConversationTranscriptionAsync(speechconfig, wavFile);
+            //await ConversationTranscription.StartConversationTranscriptionAsync(speechconfig, wavFile);
 
             //Speech To Text from different sources
-            //await SpeechToTextFromDifferentSources.SpeechToTextAsync(speechconfig);
+            await SpeechToTextFromDifferentSources.SpeechToTextAsync(speechconfig);
         }
     }
 }
