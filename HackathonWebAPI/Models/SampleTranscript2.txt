@@ -1,58 +1,47 @@
 INT. COMMUNITY ASSESSMENT - DAY
 
+Hi, good day. I am your health coordinator, Lisa David.
 
-Lisa (HCW): Hi, good day. I am your Health Coordinator Lisa David. 
+How are you today?
 
-Pat: Hi Lisa, I am Pat.
+Not so good, I am feeling a bit under the weather today. And also, just stressed out because of a big presentation coming up.
 
-Lisa (HCW): How are you today?
-
-Pat: Not so good, I am feeling a bit under the weather today.
-
-Lisa (HCW): I'm sorry to hear that but don't worry, I'm here to assess you and see how we can help.
+I'm sorry to hear that but don't worry, I'm here to assess you and see how we can help.
 
 Pat: Great, thank you
 
-Lisa (HCW): Okay, first, may I know the Patient's Full Name?
+Okay, first, may I know the full name of the patient?
 
-Pat: My name is Pat Smith.
+My name is Pat Smith.
 
-Lisa: May I know the Medical Conditions you're dealing with right now?
+Alright. Can you tell me what medical conditions you are having right now?
 
-Pat: I'm having migraines today, could be due to lack of sleep. I usually just manage them with rest and water but
-it is worse this day for some reason.
+Sure. I have hypertension and arthritis. Also, I'm having migraines today, could be due to lack of sleep. I usually just manage them with rest and water but it is worse this day for some reason.
 
-Lisa (HCW): I'm sorry to hear that. Any particular reason for the lack of sleep? 
+I'm sorry to hear that. This is noted.
 
-Pat: Yeah, just stressed out because of a big presentation coming up.
+Do you have allergies?
 
-Lisa: That's understandable. Do you have other Medical History that we should know of?
+I don't have any allergies.
 
-Pat: Yes, I also have hypertension and arthritis. 
+By any chance are you taking any medication for these illness?
 
-Lisa (HCW) : By any chance are you taking any Medication for these illness?
+Yes, I am taking Amlodipine for my blood pressure and Ibuprofen for when my joints act up.
 
-Pat: Yes, I am taking Amlodipine for my blood pressure and Ibuprofen for when my joints act up.
+Alright, Can you tell me about your vaccine history?
 
-Lisa: Alright, how about your Vaccine History?
+Yes. I have just gotten my third Pfizer Covid vaccine a week ago. My left arm felt a little heavy but other than that, I did not feel any side effects.
 
-Pat:  I have just gotten my third Pfizer Covid booster a week ago.
+How about your first and second vaccine?
 
-Lisa (HCW): Oh, that's great. How are you feeling? Any side effects?
+I first got it last June 2022 and then the second one on January 2023. Luckily I did not feel any side effects either.
 
-Pat: I'm feeling good, my left arm felt a little heavy but other than that, I did not feel any side effects.
+That's good to hear. So that is all for our assessment, any additional information that you might have missed?
 
-Lisa: How about your first and second vaccine?
+Not that I think of, but if anything else comes up I 'll let you know.
 
-Pat (HCW): I first got it last June 2022 and then the second one on January 2023. Luckily I did not feel any side effects either.
+Alright then, I think we are all set here. Thank you so much for your time. Have a great day.
 
-Lisa (HCW) : That's good to hear. So that is all for our assessment, any additional information that you might have missed?
+Thank you too. Have a great day.
 
-Pat: Not that I think of, but if anything else comes up I 'll let you know.
-
-Lisa (HCW): Alright then, I think we are all set here. Thank you so much for your time. Have a great day.
-
-Pat: Thank you too. Have a great day.
-
-Lisa (HCW): To summarize, the patient is suffering from migraine due to stress and lack of sleep. She's taking Amlodipine for hypertension and has history of arthritis. 
-She completed her 3rd doze of covid vaccine a week ago with no side effects.
+In summary, the patient is suffering from migraine due to stress and lack of sleep. She's taking Amlodipine for hypertension and has history of arthritis. She completed her 3rd doze of covid vaccine a week ago with no side effects.

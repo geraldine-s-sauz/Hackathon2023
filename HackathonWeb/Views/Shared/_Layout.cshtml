@@ -175,19 +175,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="mt-3"></div> <!-- Add a spacer with 'mt-3' class -->
-                <!-- Replace 'mt-3' with the desired spacing class (mt for margin-top or mb for margin-bottom) and adjust the number to set the desired space -->
-                <div class="col text-center">
-                    <!-- Add 'text-center' class here -->
-                    <button class="btn btn-primary" type="submit" id="btnCompleteAssessment" >Complete assessment.</button>
-                    <div class="mt-3"></div> 
-                    <div id="output" class="mt-3"></div>
-                    <!-- Add a spacer with 'mt-3' class -->
-                    <!-- Replace 'mt-3' with the desired spacing class (mt for margin-top or mb for margin-bottom) and adjust the number to set the desired space -->
-                </div>
+            <div class="row ">
+                <div id="output" class="mt-3"></div>
             </div>
-        
+            
             <div class="row">
                 <div class="col">
                     <form>
@@ -195,9 +186,9 @@
                             <span>Conduct Assessment</span>
                         </h4>
                         <div class="form-row ">
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col">
                                 <label for="inputAssessmentName">Assessment Name</label>
-                                <select name="" class="form-control wide" id="inputAssessmentName">
+                                <select class="form-control wide" id="inputAssessmentName" style="width:50%">
                                     <option value="Normal distribution ">Assessment 1 </option>
                                     <option value="Normal distribution ">Assessment 2 </option>
                                     <option value="Normal distribution ">Assessment 3 </option>
@@ -217,31 +208,42 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="inputAllergies">Allergies</label>
-                                <textarea class="form-control" id="inputAllergies" style="width:100%; height:300px;" placeholder=""></textarea>
+                                <textarea class="form-control" id="inputAllergies" style="width:100%; height:200px;" placeholder=""></textarea>
                             </div>
                             <div class="form-group col">
                                 <label for="inputMedications">Medications</label>
-                                <textarea class="form-control" id="inputMedications" style="width:100%; height:300px;" placeholder=""></textarea>
+                                <textarea class="form-control" id="inputMedications" style="width:100%; height:200px;" placeholder=""></textarea>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col">
-                                <label for="inputVH">Vaccine History</label>
-                                <textarea class="form-control" id="inputVH" style="width:100%; height:300px;" placeholder=""></textarea>
+                                <label for="inputVH">Vaccine</label>
+                                <textarea class="form-control" id="inputVaccine" placeholder="" style="width:50%"></textarea>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col">
                                 <label for="inputMH">Medical History</label>
-                                <textarea class="form-control" id="inputMH" style="width:100%; height:300px;" placeholder=""></textarea>
+                                <textarea class="form-control" id="inputMH" style="width:100%; height:200px;" placeholder=""></textarea>
                             </div>
                         </div>
                         <div class="form-row ">
                             <label for="inputNote">Summary</label>
-                            <textarea class="form-control" id="inputSummary" style="width:100%; height:300px;" placeholder=""></textarea>
+                            <textarea class="form-control" id="inputSummary" style="width:100%; height:200px;" placeholder=""></textarea>
                         </div>
-                        <div class="btn-box">
-                            <button type="submit" class="btn ">Submit Now</button>
-                        </div>
+
+                        <button type="submit" class="btn ">Submit Now</button>
                     </form>
+                    <div class="row">
+                        <div class="mt-3"></div>
+                        <div class="col text-center">
+                            <!-- Add 'text-center' class here -->
+                            <button class="btn btn-primary" type="submit" id="btnCompleteAssessment">Complete assessment</button>
+                            <div class="mt-3"></div>
+                            <div id="output" class="mt-3"></div>
+                            <!-- Add a spacer with 'mt-3' class -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -297,5 +299,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
