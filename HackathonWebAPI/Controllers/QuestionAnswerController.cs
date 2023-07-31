@@ -2,13 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Azure;
 using Azure.AI.Language.QuestionAnswering;
-using OpenAI_API.Completions;
-using OpenAI_API;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
-using BingChat;
-using System.Runtime.ConstrainedExecution;
-using System.Diagnostics;
 
 namespace HackathonWebAPI.Controllers
 {
@@ -137,29 +132,29 @@ namespace HackathonWebAPI.Controllers
             return "Sorry. No information has been found.";
         }
 
-        [HttpGet("GetBingChat")]
-        public async Task<ActionResult<string>> GetBingChat(string QuestionUI, string TranscribeText)
-        {
-            string U2 = Guid.NewGuid().ToString();
-            string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\n"
-                    //+ "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
-                    + "From this transcript: " + TranscribeText + ", What is the answer for the question: " + QuestionUI
-                    + " Please answer directly. You do not need to repeat the question.";
-            // Construct the chat client
-            var client = new BingChatClient(new BingChatClientOptions
-            {
-                // Tone used for conversation
-                Tone = BingChatTone.Balanced,
-                CookieU = U2,
-                //CookieFilePath = readFile
-            });
+        //[HttpGet("GetBingChat")]
+        //public async Task<ActionResult<string>> GetBingChat(string QuestionUI, string TranscribeText)
+        //{
+        //    string U2 = Guid.NewGuid().ToString();
+        //    string prompt = "You are a health professional whose very good at assessing patients and knows the key points of the conversation.\n"
+        //            //+ "From this answer: " + Answer + ", does it answer the question: " + Question + " ?.\b"
+        //            + "From this transcript: " + TranscribeText + ", What is the answer for the question: " + QuestionUI
+        //            + " Please answer directly. You do not need to repeat the question.";
+        //    // Construct the chat client
+        //    var client = new BingChatClient(new BingChatClientOptions
+        //    {
+        //        // Tone used for conversation
+        //        Tone = BingChatTone.Balanced,
+        //        CookieU = U2,
+        //        //CookieFilePath = readFile
+        //    });
 
-            //var message = "Do you like cats?";
-            var answer = await client.AskAsync(prompt);
+        //    //var message = "Do you like cats?";
+        //    var answer = await client.AskAsync(prompt);
 
-            Console.WriteLine($"Answer: {answer}");
+        //    Console.WriteLine($"Answer: {answer}");
 
-            return Ok(answer);
-        }
+        //    return Ok(answer);
+        //}
     }
 }
