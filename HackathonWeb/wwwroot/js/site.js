@@ -48,7 +48,7 @@ function init() {
                 transcribe = transcribe + " " + speech.text;
                 transcribe = transcribe.toLowerCase();
                 console.log("TRANSCRIBE: \n" + transcribe + "\n");
-                populateAssessmentForms(transcribe);
+                fromWebkitSpeechRecognition(transcribe);
                 //resetTranscribeAfterDelay();
             }
         });
@@ -170,11 +170,11 @@ function init() {
     async function getAzureQnA(question) {
         console.log("I am in get AzureQnA");
         try {
-            const response = await fetch(`https://localhost:44337/api/QuestionAnswer?QuestionUI=${encodeURIComponent(question)}`);
+            const response = await fetch(`https://localhost:44337/api/QuestionAnswer/GetAzureQnA?QuestionUI=${encodeURIComponent(question)}`);
 
             if (response.ok) {
                 const data = await response.text(); // Parse the response as text
-                console.log("Response received: ", data);
+                console.log("Response received from AzureQnA: ", data);
                 return data; // Return the parsed data
             } else {
                 // Handle the error here
@@ -209,9 +209,9 @@ function init() {
         }
     }
 
-    //function to populate the assessment based on verbiage.
-    async function populateAssessmentForms(result) {
-        console.log("populateAssessmentForms is here!")
+    //function to populate the assessment using webkitSpeechRecnognition.
+    async function fromWebkitSpeechRecognition(result) {
+        console.log("fromWebkitSpeechRecognition is here!")
         var el;
         var question = "";
         var answer = result;
@@ -233,21 +233,23 @@ function init() {
                 question = "What is the patient's full name?";
                 getId = "inputPatientName";
                 el = document.getElementById(getId);
-                el.id == getId ? el.value = await getAzureQnA(question, answer) : console.log('DOM.el is NULL');
+                el.id == getId ? el.value = await getAzureQnA(question) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
-            case result.includes('health care worker') || result.includes('healthcare worker'):
+            case result.includes('health coordinator') :
                 question = "What is the Health Coordinator's full name?";
                 getId = "inputDoctorName";
                 el = document.getElementById(getId);
-                el.id == getId ? el.value = await getAzureQnA(question, answer) : console.log('DOM.el is NULL');
+                el.id == getId ? el.value = await getAzureQnA(question) : console.log('DOM.el is NULL');
                 transcribe = '';
                 break;
-            case result.includes('medical conditions') && result.includes('this is noted'):
-                question = "What are the patient's medical conditions? Write it in a bullet form where Medication name is incidated paired with a brief explanation.";
-                getId = "inputMedicalConditions";
+            case result.includes('medications') && result.includes('this is noted'):
+                //question = "What are the patient's medical conditions? Write it in a bullet form where Medication name is incidated paired with a brief explanation.";
+                //question = "What are the patient's medical conditions? Enumerate them."
+                question = "What are the medications of the patient? Enumerate them."
+                getId = "inputMedications";
                 el = document.getElementById(getId);
-                el.id == getId ? el.value = await getPrompt(question, answer) : console.log('DOM.el is NULL');
+                el.id == getId ? el.value = await getAzureQnA(question) : console.log('DOM.el is NULL'); //getPrompt(question, answer)
                 transcribe = '';
                 break;
 

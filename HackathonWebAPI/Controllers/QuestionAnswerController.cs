@@ -91,8 +91,8 @@ namespace HackathonWebAPI.Controllers
             return final;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<string>> GetQnA(string QuestionUI)
+        [HttpGet("GetAzureQnA")]
+        public async Task<ActionResult<string>> GetAzureQnA(string QuestionUI)
         {
             //Declarations
             var configuration = new ConfigurationBuilder()
