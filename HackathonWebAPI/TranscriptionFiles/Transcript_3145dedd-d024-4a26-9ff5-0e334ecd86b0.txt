@@ -1,0 +1,8 @@
+
+Unidentified: Good morning, Steve.
+Unidentified: Good morning, Katie.
+Unidentified: No. Tell me more.
+Katie: Have you heard about the new conversation transcription capability?
+Katie: It's the new feature that transcribes our discussion and lets us know who said what.
+Steve: That sounds interesting. I'm going to give this a try.
+Katie: Good morning, Steve.

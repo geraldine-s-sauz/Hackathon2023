@@ -63,12 +63,12 @@ function init() {
             speech.listening = !speech.listening;
             if (speech.listening) {
                 transcribe = '';
-                document.getElementById('output').innerText = 'Listening...';
+                //document.getElementById('output').innerText = 'Listening...';
                 speech.recognition.start();
             }
             else {
                 transcribe = '';
-                document.getElementById('output').innerText = 'Listening has ended.';
+                //document.getElementById('output').innerText = 'Listening has ended.';
                 speech.recognition.stop();
             }
         })
@@ -196,11 +196,11 @@ async function getPrompt(question, answer) {
             return data; // Return the parsed data
         } else {
             // Handle the error here
-            document.getElementById('output').innerText = 'Error occurred during the API call.';
+           // document.getElementById('output').innerText = 'Error occurred during the API call.';
         }
     } catch (error) {
         // Handle any network or other errors here
-        document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        //document.getElementById('output').innerText = 'An error occurred: ' + error.message;
     }
 }
 
@@ -219,11 +219,11 @@ async function getPromptFromTranscription(question) {
             return data; // Return the parsed data
         } else {
             // Handle the error here
-            document.getElementById('output').innerText = 'Error occurred during the API call.';
+            //document.getElementById('output').innerText = 'Error occurred during the API call.';
         }
     } catch (error) {
         // Handle any network or other errors here
-        document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+       // document.getElementById('output').innerText = 'An error occurred: ' + error.message;
     }
 }
 
@@ -239,11 +239,11 @@ async function getAzureQnA(question) {
             return data; // Return the parsed data
         } else {
             // Handle the error here
-            document.getElementById('output').innerText = 'Error occurred during the API call.';
+            //document.getElementById('output').innerText = 'Error occurred during the API call.';
         }
     } catch (error) {
         // Handle any network or other errors here
-        document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+       // document.getElementById('output').innerText = 'An error occurred: ' + error.message;
     }
 }
 
@@ -259,10 +259,10 @@ async function getFromMicrophone() {
             return data; // Return the parsed data
         } else {
             // Handle the error here
-            document.getElementById('output').innerText = 'Error occurred during the API call.';
+            //document.getElementById('output').innerText = 'Error occurred during the API call.';
         }
     } catch (error) {
         // Handle any network or other errors here
-        document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        //document.getElementById('output').innerText = 'An error occurred: ' + error.message;
     }
 }
