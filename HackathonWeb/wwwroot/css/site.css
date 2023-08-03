@@ -61,4 +61,10 @@ body {
 .image-container1 {
     margin-right: 20px;
 }
-    
+
+.centered-div {
+    position: absolute;
+    top: 30%;
+    right: 1600px;
+    transform: translate(-50%, -50%); /* Add other styles for the centered div, like width, height, etc. */
+}

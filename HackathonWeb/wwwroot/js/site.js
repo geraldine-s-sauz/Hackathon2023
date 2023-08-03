@@ -188,7 +188,7 @@ async function getPrompt(question, answer) {
         throw new Error("value must be a string.");
     }
     try {
-        const response = await fetch(`https://localhost:44337/api/OpenAI/GetPrompt?Question=${encodeURIComponent(question)}&Answer=${encodeURIComponent(answer)}`);
+        const response = await fetch(`https://localhost:7290/api/OpenAI/GetPrompt?Question=${encodeURIComponent(question)}&Answer=${encodeURIComponent(answer)}`);
 
         if (response.ok) {
             const data = await response.text(); // Parse the response as text
@@ -211,7 +211,7 @@ async function getPromptFromTranscription(question) {
     }
     console.log("COMPLETING THE ASSESSMENT NOW");
     try {
-        const completeAssessmentResponse = await fetch(`https://localhost:44337/api/OpenAI/GetPromptFromTranscript?Question=${encodeURIComponent(question)}`);
+        const completeAssessmentResponse = await fetch(`https://localhost:7290/api/OpenAI/GetPromptFromTranscript?Question=${encodeURIComponent(question)}`);
 
         if (completeAssessmentResponse.ok) {
             const data = await completeAssessmentResponse.text(); // Parse the response as text
@@ -231,7 +231,7 @@ async function getPromptFromTranscription(question) {
 async function getAzureQnA(question) {
     console.log("I am in get AzureQnA");
     try {
-        const response = await fetch(`https://localhost:44337/api/QuestionAnswer/GetAzureQnA?QuestionUI=${encodeURIComponent(question)}`);
+        const response = await fetch(`https://localhost:7290/api/QuestionAnswer/GetAzureQnA?QuestionUI=${encodeURIComponent(question)}`);
 
         if (response.ok) {
             const data = await response.text(); // Parse the response as text
@@ -250,7 +250,8 @@ async function getAzureQnA(question) {
 //function to call Azure microphone
 async function getFromMicrophone() {
     try {
-        const response = await fetch(`https://localhost:44337/api/QuestionAnswer?QuestionUI=${encodeURIComponent(question)}`);
+      
+        const response = await fetch(`https://localhost:7290/api/QuestionAnswer?QuestionUI=${encodeURIComponent(question)}`);
 
         if (response.ok) {
             const data = await response.text(); // Parse the response as text
