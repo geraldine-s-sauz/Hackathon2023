@@ -95,7 +95,7 @@ async function fromWebkitSpeechRecognition(result) {
 
     //does the checking
     switch (true) {
-        case result.includes('full name') && result.includes('patient'):
+        case result.includes('full name') && result.includes('patient') && result.includes('noted'):
             question = "What is the patient's full name?";
             getId = "inputPatientName";
             el = document.getElementById(getId);

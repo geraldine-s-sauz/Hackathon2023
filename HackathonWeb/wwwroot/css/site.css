@@ -59,7 +59,11 @@ body {
 
 /* Indent from the right side */
 .image-container1 {
-    margin-right: 20px;
+    /*margin-right: 20px;*/
+    max-width: 150%;
+    height: auto;
+    display: block; /* Ensures proper spacing and alignment */
+    margin: 0 auto; /* Centers the image horizontally */
 }
 
 .centered-div {
@@ -67,4 +71,5 @@ body {
     top: 30%;
     right: 1600px;
     transform: translate(-50%, -50%); /* Add other styles for the centered div, like width, height, etc. */
+  
 }
