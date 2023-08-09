@@ -46,12 +46,10 @@ function init() {
                 speech.text = audio[0].transcript;
                 result.innerText = speech.text;
                 if (audio.isFinal) {
-                    //delayedMessage();
                     transcribe = transcribe + " " + speech.text;
                     transcribe = transcribe.toLowerCase();
                     console.log("TRANSCRIBE: \n" + transcribe + "\n");
                     fromWebkitSpeechRecognition(transcribe);
-                    //resetTranscribeAfterDelay();
                 }
             });
         } catch (e) {
@@ -63,12 +61,10 @@ function init() {
             speech.listening = !speech.listening;
             if (speech.listening) {
                 transcribe = '';
-                //document.getElementById('output').innerText = 'Listening...';
                 speech.recognition.start();
             }
             else {
                 transcribe = '';
-                //document.getElementById('output').innerText = 'Listening has ended.';
                 speech.recognition.stop();
             }
         })
@@ -86,12 +82,6 @@ async function fromWebkitSpeechRecognition(result) {
     if (typeof result !== "string") {
         throw new Error("valueResult must be a string.");
     }
-
-    //var tempString = "Have you experienced any medical conditions today? Yeah, I've got hypertension and arthritis. I take amlodipine or amlodipine. I'm quite unsure. I'm a Lady Pin. That's right. That medication for my blood pressure and ibuprofen when my joints act up. And I also had a nephritis when I was young. Sporadic migraines pop up sometimes too, but I manage them with rest and Sumatriptan when needed. This is noted.";
-
-    //if (tempString.includes('medical conditions') && tempString.includes('this is noted')) {
-    //    console.log("Both 'medical conditions' and 'this is noted' are present in the string.");
-    //};
 
     //does the checking
     switch (true) {
@@ -196,7 +186,7 @@ async function getPrompt(question, answer) {
             return data; // Return the parsed data
         } else {
             // Handle the error here
-           // document.getElementById('output').innerText = 'Error occurred during the API call.';
+            // document.getElementById('output').innerText = 'Error occurred during the API call.';
         }
     } catch (error) {
         // Handle any network or other errors here
@@ -223,7 +213,7 @@ async function getPromptFromTranscription(question) {
         }
     } catch (error) {
         // Handle any network or other errors here
-       // document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        // document.getElementById('output').innerText = 'An error occurred: ' + error.message;
     }
 }
 
@@ -243,14 +233,13 @@ async function getAzureQnA(question) {
         }
     } catch (error) {
         // Handle any network or other errors here
-       // document.getElementById('output').innerText = 'An error occurred: ' + error.message;
+        // document.getElementById('output').innerText = 'An error occurred: ' + error.message;
     }
 }
 
 //function to call Azure microphone
 async function getFromMicrophone() {
     try {
-      
         const response = await fetch(`https://localhost:7290/api/QuestionAnswer?QuestionUI=${encodeURIComponent(question)}`);
 
         if (response.ok) {
