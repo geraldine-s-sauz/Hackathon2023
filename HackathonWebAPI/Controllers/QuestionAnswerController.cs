@@ -1,4 +1,4 @@
-﻿using HackathonWebAPI.Models;
+using HackathonWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Azure;
 using Azure.AI.Language.QuestionAnswering;
@@ -100,7 +100,7 @@ namespace HackathonWebAPI.Controllers
             string api_QnA = configuration.GetSection("ApiKeys").GetSection("ApiKey_QnA").Value!;
             Uri endpoint = new("https://eastasialanguageservice.cognitiveservices.azure.com/");
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string transcriptPath = Path.Combine(sCurrentDirectory, @"C:..\..\Hackathon2023\HackathonWebAPI\Models\SampleTranscript2.txt");
+            string transcriptPath = Path.Combine(sCurrentDirectory, @"C:..\..\Hackathon2023-master\HackathonWebAPI\Models\SampleTranscript2.txt"); 
             string readTranscriptText = System.IO.File.ReadAllText(Path.GetFullPath(transcriptPath));
 
             //Functions
@@ -109,6 +109,50 @@ namespace HackathonWebAPI.Controllers
             IEnumerable<TextDocument> records = new[]
             {
                 new TextDocument("doc1", readTranscriptText)
+            };
+            AnswersFromTextOptions options = new(QuestionUI, records);
+            Response<AnswersFromTextResult> response = await client.GetAnswersFromTextAsync(options);
+            foreach (TextAnswer answer in response.Value.Answers)
+            {
+                if (answer.Confidence > .01)
+                {
+                    string BestAnswer = response.Value.Answers[0].Answer;
+                    System.Diagnostics.Debug.WriteLine($"Q{QuestionUI}:{options.Question}");
+                    System.Diagnostics.Debug.WriteLine($"A{QuestionUI}:{BestAnswer}");
+                    System.Diagnostics.Debug.WriteLine($"Confidence Score: ({response.Value.Answers[0].Confidence:P2})"); //:P2 converts the result to a percentage with 2 decimals of accuracy.
+
+                    string final = response.Value.Answers[0].ShortAnswer.Text;
+                    return Ok(final);
+                }
+                else
+                {
+                    return Ok("None was mentioned during the conversation");
+                }
+            }
+            return "Sorry. No information has been found.";
+        }
+
+        [HttpGet("GetAzureQnA2")]
+        public async Task<ActionResult<string>> GetAzureQnA2(string QuestionUI, string TranscribeText)
+        {
+            //Declarations
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("local.appsettings.json")
+                .Build();
+            string api_QnA = configuration.GetSection("ApiKeys").GetSection("ApiKey_QnA").Value!;
+            Uri endpoint = new("https://eastasialanguageservice.cognitiveservices.azure.com/");
+            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //string transcriptPath = Path.Combine(sCurrentDirectory, @"C:..\..\Hackathon2023\HackathonWebAPI\Models\SampleTranscript2.txt"); C:..\..\Hackathon2023-master\HackathonWebAPI\Models\SampleTranscript2.txt
+            //string transcriptPath = "C:/Users/geraldine.s.sauz/Downloads/output.txt"; //Path.Combine(sCurrentDirectory, @"C:..\..\Hackathon2023-master\HackathonWebAPI\Models\transcribe.txt");
+            //string readTranscriptText = System.IO.File.ReadAllText(Path.GetFullPath(transcriptPath));
+
+            //Functions
+            AzureKeyCredential credential = new(api_QnA);
+            QuestionAnsweringClient client = new(endpoint, credential);
+            IEnumerable<TextDocument> records = new[]
+            {
+                new TextDocument("doc1", TranscribeText)
             };
             AnswersFromTextOptions options = new(QuestionUI, records);
             Response<AnswersFromTextResult> response = await client.GetAnswersFromTextAsync(options);
